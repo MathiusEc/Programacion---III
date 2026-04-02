@@ -1,0 +1,39 @@
+# Archivos compilados de Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Carpetas de salida de IntelliJ IDEA
+out/
+*/out/
+build/
+*/build/
+
+# Archivos de configuración del IDE
+.idea/
+*/.idea/
+*.iws
+*.ipr
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.tmp
+
+# Logs
+*.log
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Archivos específicos de IntelliJ que no necesitamos en el repo
+*.iml.bak
+.idea_modules/
+
+# Carpetas de dependencias (si usas Maven o Gradle más adelante)
+target/
+.gradle/
