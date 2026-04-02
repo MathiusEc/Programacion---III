@@ -74,13 +74,13 @@ When contributing or adding new exercises:
 
 ### Personal Note
 
-*"Si vas a subir, ¡entonces apunta a la cima!"*
+*"No me importa si no soy la mejor, ¡yo seré la mejor para mí!"*
 
-**— Shōyō Hinata**
+**— Hitori Gotou**
 
 <br>
 
-<img src="https://i.pinimg.com/736x/fc/94/21/fc94218df8bf4001700b87dcfb48072a.jpg" alt="Inspiration" width="280">
+<img src="https://i.pinimg.com/736x/25/45/86/254586abcd1015a44372c32f18b6ca35.jpg" alt="Inspiration" width="280">
 
 <br><br>
 
