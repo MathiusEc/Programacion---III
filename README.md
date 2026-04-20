@@ -18,7 +18,38 @@ The project follows a modular structure where each folder is an independent proj
 
 ```text
 Ejercicios_III/
-└── SnakeGame/           # Interactive game implementing GUI, game loops, and logic
+├── Big O/                          # Algorithm complexity analysis and Big O notation
+│   └── src/
+│       └── Main.java
+├── Dynamic Stack/                  # Stack implementation with dynamic nodes
+│   └── src/
+│       ├── Main.java
+│       ├── Nodo.java
+│       └── PilaDinamica.java
+├── Invertir Cadena/                # String reversal exercise
+│   └── src/
+│       └── Main.java
+├── Practica/                       # Practice exercises with queue and printer simulation
+│   └── src/
+│       ├── Documento.java
+│       ├── Impresora.java
+│       └── Main.java
+├── Práctica Prueba I/              # Practice exam preparation exercises
+│   ├── Colas_FIFO/                 # FIFO Queue implementation
+│   │   └── src/
+│   │       └── Main.java
+│   ├── Pila_ArrayList/             # Stack implementation using ArrayList
+│   │   └── src/
+│   │       ├── Main.java
+│   │       └── Pila.java
+│   └── Pila_Dinamica_Nodos/        # Dynamic stack implementation with linked nodes
+│       └── src/
+│           ├── Main.java
+│           ├── Nodo.java
+│           └── Pila_LinkedList_Manual.java
+└── SnakeGame/                      # Interactive game implementing GUI, game loops, and logic
+    └── src/
+        └── SnakeGame.java
 ```
 
 *Note: New modules and exercises will be added as the course progresses.*
