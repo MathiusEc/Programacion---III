@@ -1,30 +1,36 @@
-import java.util.Scanner;
-
 /**
- *Enunciado:
- * Solicitar al usuario dos cadenas. El programa debe determinar si la segunda cadena es exactamente la reversa de la primera
- * (ignorando espacios y mayúsculas/minúsculas). Debe insertarse carácter a carácter de la primera cadena en una `Pila`
- * y carácter a carácter de la segunda cadena en una `Cola`, luego comparar `pop()` vs `dequeue()`.
+ * Enunciado:
+ * Ingresar una cadena. El programa debe comprobar si la cadena (tras normalizar) es simétrica por mitades:
+ * la primera mitad debe ser igual a la reversa de la segunda mitad. Si la longitud es impar, se ignora el carácter central.
+ * Usar una `Cola` para la primera mitad (orden original) y una `Pila` para la segunda mitad (para invertirla) y comparar.
  * Restricciones:
- * No usar métodos automáticos de inversión de cadenas.
- * Usar `Pila` y `Cola` implementadas con `Nodo` (dinámicas).
- * Normalizar quitando espacios y caracteres no alfanuméricos, y pasar a minúsculas.
+ * No usar métodos automáticos de inversión.
+ * Usar `Pila` y `Cola` dinámicas con `Nodo`.
+ * Normalizar quitando espacios y no alfanuméricos; pasar a minúsculas.
  * Requisitos obligatorios:
- * Solicitar dos entradas al usuario.
- * Validar entradas vacías y longitud distinta → salida inmediata.
- * Insertar cada carácter de la primera en la pila y de la segunda en la cola.
- * Comparar elementos hasta vaciar estructuras o detectar diferencia.
- * Mostrar: "La segunda es la reversa de la primera" o "No son reversas".
+ * Solicitar una cadena al usuario y validar que, tras limpieza, tenga al menos longitud 2.
+ * Dividir en dos mitades (si impar, descartar el carácter central).
+ * Enqueue caracteres de la primera mitad; push caracteres de la segunda mitad.
+ * Comparar `dequeue()` vs `pop()` hasta terminar.
+ * Mostrar: "Es simétrica por mitades" o "No es simétrica por mitades".
  * Incluir comentario con análisis Big-O al final del archivo `.java`.
  * Ejemplos:
- * Entrada1: `hola`, Entrada2: `aloh` → Salida: `La segunda es la reversa de la primera`
- * Entrada1: `Reconocer`, Entrada2: `ronecneR` → Tras normalizar → `Sí`.
+ * Entrada: `abccba` → Primera mitad `abc`, segunda `cba` → Resultado: `Es simétrica por mitades`.
+ * Entrada: `anitalava` → Tras limpiar y dividir → evaluar según mitades.
  * Criterios de evaluación (resumen):
- * Uso correcto de `Pila` (25%) y `Cola` (25%).
- * Validación y normalización (20%).
- * Comparación correcta sin funciones prohibidas (20%).
- * Big-O correcto y comentarios (10%).
- */
+ * Correcta partición y manejo de caso impar (25%).
+ * Uso correcto de `Pila` y `Cola` (30%).
+ * Validaciones y limpieza (25%).
+ * Big-O y comentarios (20%).
+ * Entrega y formato (válido para ambos ejercicios):
+ * Archivo `.java` ejecutable con `main`.
+ * Código correctamente indentado y comentado.
+ * Comentario final con análisis de complejidad temporal (Big-O).
+ * No usar métodos automáticos de inversión de cadenas.
+ * */
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -34,71 +40,74 @@ public class Main {
         Pila pila = new Pila();
 
         // Input
-        System.out.print("Ingrese la primera cadena: ");
-        String cadena1 = sc.nextLine();
-        System.out.print("Ingrese la segunda cadena: ");
-        String cadena2 = sc.nextLine();
+        System.out.println("Ingrese una cadena: ");
+        String input = sc.nextLine();
 
         // Processing
-        // Limpiar las cadenas de espacios y caracteres no alfanuméricos, y convertir a minúsculas
-        String cadena1Limpia = limpiarCadena(cadena1);
-        String cadena2Limpia = limpiarCadena(cadena2);
+        // Limpiar la cadena de espacios y caracteres no alfanuméricos, y convertir
+        String cadenaLimpia = limpiarCadena(input);
 
-        // Validar entradas vacías después de la normalización
-        if (cadena1Limpia.isEmpty() || cadena2Limpia.isEmpty()) {
-            System.out.println("Error: Ambas cadenas deben contener al menos un carácter alfanumérico.");
+        // Validar que la cadena tenga al menos longitud 2 después de la limpieza
+        if (cadenaLimpia.length() < 2) {
+            System.out.println("Error: La cadena debe contener al menos dos caracteres alfanuméricos después de la limpieza.");
             sc.close();
             return; // Salida inmediata
         }
 
-        // Validar longitud distinta después de la normalización (salida inmediata)
-        if (cadena1Limpia.length() != cadena2Limpia.length()) {
-            System.out.println("Error: Las cadenas normalizadas tienen distinta longitud.");
-            sc.close();
-            return; // Salida inmediata
-        }
-
-        // Insertar cada carácter de la primera cadena en la pila y de la segunda cadena en la cola
-        for (char c : cadena1Limpia.toCharArray()) {
-            pila.push(c);
-        }
-
-        for (char c : cadena2Limpia.toCharArray()) {
-            cola.enqueue(c);
-        }
-
-        // Comparar elementos hasta vaciar estructuras o detectar diferencia
-        if (sonReversas(pila, cola)) {
-            System.out.println("La segunda es la reversa de la primera");
+        // Dividir la cadena en dos mitades y llenar la pila y la cola
+        llenarEstructuras(cadenaLimpia, cola, pila);
+        if (compararEstructuras(cola, pila)) {
+            System.out.println("Es simétrica por mitades");
         } else {
-            System.out.println("No son reversas");
+            System.out.println("No es simétrica por mitades");
         }
 
-        sc.close();
+
+         /**
+          * La complejidad temporal del algoritmo desarrollado es O(n), donde n es la longitud
+          * de la cadena ingresada por el usuario. Esto se debe a que el algoritmo recorre la
+          * cadena una vez para limpiarla y otra vez para insertar los caracteres en la pila y
+          * la cola, así como para comparar los elementos de ambas estructuras. Por lo tanto,
+          * el tiempo de ejecución crece linealmente con respecto a la longitud de la cadena.
+          */
+
     }
 
     /**Dev Methods*/
     // Método para limpiar la cadena de espacios y caracteres no alfanuméricos, y convertir a minúsculas
     public static String limpiarCadena(String cadena) {
         return cadena.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        // Elimina todos los caracteres que no son letras o números y convierte la cadena a minúsculas
-        // ^ indica negación, por lo que [^a-zA-Z0-9] coincide con cualquier carácter que no sea una letra mayúscula, una letra minúscula o un dígito
     }
 
+    // Método para dividir la cadena en dos mitades y llenar la pila y la cola
+    public static void llenarEstructuras(String cadena, Cola cola, Pila pila) {
+        int longitud = cadena.length(); // Obtener la longitud de la cadena empieza desde 1, no desde 0
+        int mitad = longitud / 2;
 
-    // Método comparar elementos de la pila y la cola para determinar si son reversas
-    public static boolean sonReversas(Pila pila, Cola cola) {
-        while (!pila.isEmpty() && !cola.isEmpty()) {
-            if (pila.pop() != cola.dequeue()) {
-                return false; // Si encontramos una diferencia, no son reversas
+        // Enqueue caracteres de la primera mitad en la cola
+        for (int i = 0; i < mitad; i++) {
+            cola.enqueue(cadena.charAt(i));
+        }
+
+        // Push caracteres de la segunda mitad en la pila (si impar, se ignora el carácter central)
+        // recorrer la segunda mitad en orden normal y hacer push para que pop devuelva la inversa
+        int inicioSegundaMitad = mitad + (longitud % 2); // si es impar, saltar el carácter central
+        for (int i = inicioSegundaMitad; i < longitud; i++) {
+            pila.push(cadena.charAt(i));
+            // se empuja la segunda mitad en su orden natural; al hacer pop obtendremos la reversa
+        }
+    }
+
+    // Método para comparar los elementos de la pila y la cola (Son simétricas por mitades si todos los elementos coinciden)
+    public static boolean compararEstructuras(Cola cola, Pila pila) {
+        while (!cola.isEmpty() && !pila.isEmpty()) {
+            if (cola.dequeue() != pila.pop()) {
+                return false; // Si se encuentra una diferencia, no son simétricas por mitades
             }
         }
-        return pila.isEmpty() && cola.isEmpty(); // Ambas estructuras deben estar vacías para ser reversas
+        // Si alguna de las estructuras quedó con elementos, no son equivalentes
+        return cola.isEmpty() && pila.isEmpty(); // true sólo si ambas quedaron vacías
     }
 
-    /*
-     * Complejidad:
-     * Tiempo: O(n) donde n es la longitud de la cadena normalizada. Cada carácter se procesa, se inserta una vez y se compara una vez.
-     * Espacio: O(n) por el uso de la pila y la cola (almacenan cada carácter de la cadena).
-     */
+
 }
