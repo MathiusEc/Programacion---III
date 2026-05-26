@@ -137,7 +137,7 @@ pq.encolar("Tarea normal", 1);
 Elemento<String> siguiente = pq.desencolar(); // "Tarea urgente"
 ```
 
-## 📝 Notas Importantes
+## Notas Importantes
 
 - **Backtracking**: Solo resuelve laberintos simples. Para laberintos complejos, ajusta `crearLaberintoDePrueba()`
 - **Cola de Prioridad**: Mayor número = Mayor prioridad
@@ -146,5 +146,5 @@ Elemento<String> siguiente = pq.desencolar(); // "Tarea urgente"
 
 ---
 
-¡Buena suerte en tu prueba! 🎓
+Buena suerte en tu prueba!
 
