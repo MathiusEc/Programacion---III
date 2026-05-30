@@ -134,7 +134,7 @@ public class SnakeGame extends JPanel implements ActionListener {
         g.setFont(new Font("Arial", Font.PLAIN, 20));
 
         // Draw instruction text centered at middle of screen
-        drawCentered(g, "Presiona SPACE para comenzar", HEIGHT / 2);
+        drawCentered(g, "Press SPACE to start", HEIGHT / 2);
     }
 
     /**
@@ -298,7 +298,7 @@ public class SnakeGame extends JPanel implements ActionListener {
         drawCentered(g, "Score: " + applesEaten, HEIGHT / 2 + 40);
 
         // Draw restart instruction below score
-        drawCentered(g, "Presiona R para reiniciar", HEIGHT / 2 + 80);
+        drawCentered(g, "Press R to restart", HEIGHT / 2 + 80);
     }
 
     /**
@@ -451,7 +451,7 @@ public class SnakeGame extends JPanel implements ActionListener {
      */
     public static void main(String[] args) {
         // Create a new window (frame) with a title
-        JFrame frame = new JFrame("Snake Mejorado");
+        JFrame frame = new JFrame("Improved Snake");
 
         // Create an instance of SnakeGame (which is a JPanel)
         SnakeGame game = new SnakeGame();

@@ -18,8 +18,19 @@ The project follows a modular structure where each folder is an independent proj
 
 ```text
 Ejercicios_III/
+├── Backtracking/                   # Maze solver using backtracking algorithms
+│   └── src/
+│       ├── Configuracion.java
+│       ├── LaberintoGrafico.java
+│       ├── Laberintos.java
+│       └── Resolver.java
 ├── Big O/                          # Algorithm complexity analysis and Big O notation
 │   └── src/
+│       └── Main.java
+├── Busqueda Binaria-Lineal/        # Binary and linear search algorithm implementations
+│   └── src/
+│       ├── Busqueda.java
+│       ├── GeneradorDatos.java
 │       └── Main.java
 ├── Dynamic Stack/                  # Stack implementation with dynamic nodes
 │   └── src/
@@ -42,11 +53,52 @@ Ejercicios_III/
 │   │   └── src/
 │   │       ├── Main.java
 │   │       └── Pila.java
-│   └── Pila_Dinamica_Nodos/        # Dynamic stack implementation with linked nodes
+│   ├── Pila_Dinamica_Nodos/        # Dynamic stack implementation with linked nodes
+│   │   └── src/
+│   │       ├── Main.java
+│   │       ├── Nodo.java
+│   │       └── Pila_LinkedList_Manual.java
+│   ├── Pilas y Colas/              # Stack and Queue data structure implementations
+│   │   └── src/
+│   │       ├── Cola.java
+│   │       ├── Main.java
+│   │       ├── Nodo.java
+│   │       └── Pila.java
+│   ├── Reversa de Cadena/          # String reversal using stacks and queues
+│   │   └── src/
+│   │       ├── Cola.java
+│   │       ├── Main.java
+│   │       ├── Nodo.java
+│   │       └── Pila.java
+│   └── Simetria por Mitades/       # Symmetry check in a string using stacks and queues
 │       └── src/
+│           ├── Cola.java
 │           ├── Main.java
 │           ├── Nodo.java
-│           └── Pila_LinkedList_Manual.java
+│           └── Pila.java
+├── Recursividad Grafos/            # Sierpinski triangle generation using recursion
+│   └── src/
+│       ├── AlgoritmoSierpinski.java
+│       ├── PanelControles.java
+│       ├── PanelDibujo.java
+│       └── SierpinskiLab.java
+│       └── Tema.java
+├── RetosAlgoritmos/                # Collection of algorithmic challenges
+│   └── src/
+│       ├── backtracking/
+│       │   ├── Laberinto.java
+│       │   └── SolucionadorLaberinto.java
+│       ├── busqueda/
+│       │   └── AlgoritmosBusqueda.java
+│       ├── colasdeprioridad/
+│       │   ├── ColaPrioridad.java
+│       │   └── Elemento.java
+│       ├── deque/
+│       │   ├── Deque.java
+│       │   └── Nodo.java
+│       └── recursividad/
+│           ├── Factorial.java
+│           └── FractalSierpinski.java
 └── SnakeGame/                      # Interactive game implementing GUI, game loops, and logic
     └── src/
         └── SnakeGame.java
@@ -115,6 +167,6 @@ When contributing or adding new exercises:
 
 <br><br>
 
-*Document updated on April 2026*
+*Document updated on May 2026*
 
 </div>

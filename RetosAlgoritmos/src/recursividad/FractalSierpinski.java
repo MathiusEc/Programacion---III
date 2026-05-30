@@ -14,7 +14,7 @@ public class FractalSierpinski {
      *
      * @param nivel La profundidad de la recursión.
      */
-    public void dibujar(int nivel) {
+    public void draw(int nivel) {
         System.out.println("--- Iniciando Triángulo de Sierpinski de nivel " + nivel + " ---");
         sierpinski(nivel, "A", "B", "C");
         System.out.println("\n--- Fin del Triángulo de Sierpinski ---");
@@ -81,7 +81,6 @@ public class FractalSierpinski {
     public static void main(String[] args) {
         FractalSierpinski fractal = new FractalSierpinski();
         // Se recomienda un nivel bajo (2 o 3) para no saturar la consola.
-        fractal.dibujar(2);
+        fractal.draw(2);
     }
 }
-

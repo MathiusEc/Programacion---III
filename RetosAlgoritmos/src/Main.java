@@ -9,96 +9,96 @@ import recursividad.FractalSierpinski;
 import java.util.Arrays;
 
 /**
- * Clase principal para demostrar y probar los diferentes algoritmos implementados.
- * Cada sección del método `main` corresponde a uno de los paquetes de algoritmos.
+ * Main class to demonstrate and test the different implemented algorithms.
+ * Each section of the `main` method corresponds to one of the algorithm packages.
  */
 public class Main {
 
     public static void main(String[] args) {
         System.out.println("####################################################");
-        System.out.println("#      DEMOSTRACIÓN DE ALGORITMOS CLAVE      #");
+        System.out.println("#          KEY ALGORITHM DEMONSTRATION         #");
         System.out.println("####################################################");
 
-        // --- 1. Recursividad ---
-        demostrarRecursividad();
+        // --- 1. Recursion ---
+        demonstrateRecursion();
 
         // --- 2. Backtracking ---
-        demostrarBacktracking();
+        demonstrateBacktracking();
 
-        // --- 3. Búsqueda Lineal y Binaria ---
-        demostrarBusqueda();
+        // --- 3. Linear and Binary Search ---
+        demonstrateSearch();
 
-        // --- 4. Deque (Cola de Doble Extremo) ---
-        demostrarDeque();
+        // --- 4. Deque (Double-Ended Queue) ---
+        demonstrateDeque();
 
-        // --- 5. Cola de Prioridad ---
-        demostrarColaDePrioridad();
+        // --- 5. Priority Queue ---
+        demonstratePriorityQueue();
     }
 
-    public static void demostrarRecursividad() {
-        System.out.println("\n\n--- 1. DEMOSTRACIÓN DE RECURSIVIDAD ---");
+    public static void demonstrateRecursion() {
+        System.out.println("\n\n--- 1. RECURSION DEMO ---");
         System.out.println("\n--- a) Factorial ---");
-        int numeroFactorial = 7;
-        long resultadoFactorial = Factorial.calcular(numeroFactorial);
-        System.out.println("El factorial de " + numeroFactorial + " es: " + resultadoFactorial);
+        int factorialNumber = 7;
+        long factorialResult = Factorial.calculate(factorialNumber);
+        System.out.println("The factorial of " + factorialNumber + " is: " + factorialResult);
 
-        System.out.println("\n--- b) Fractal de Sierpinski (simulado en consola) ---");
+        System.out.println("\n--- b) Sierpinski Fractal (console simulation) ---");
         FractalSierpinski fractal = new FractalSierpinski();
-        fractal.dibujar(2); // Nivel 2 para una salida manejable
+        fractal.draw(2); // Level 2 for a manageable output
     }
 
-    public static void demostrarBacktracking() {
-        System.out.println("\n\n--- 2. DEMOSTRACIÓN DE BACKTRACKING ---");
-        System.out.println("Resolviendo un laberinto 5x5...");
-        Laberinto lab = Laberinto.crearLaberintoDePrueba();
-        SolucionadorLaberinto solucionador = new SolucionadorLaberinto(lab);
-        solucionador.resolver();
+    public static void demonstrateBacktracking() {
+        System.out.println("\n\n--- 2. BACKTRACKING DEMO ---");
+        System.out.println("Solving a 5x5 maze...");
+        Laberinto lab = Laberinto.createTestMaze();
+        SolucionadorLaberinto solver = new SolucionadorLaberinto(lab);
+        solver.solve();
     }
 
-    public static void demostrarBusqueda() {
-        System.out.println("\n\n--- 3. DEMOSTRACIÓN DE BÚSQUEDA ---");
-        int[] arrayOrdenado = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
-        int[] arrayDesordenado = {55, 23, 78, 11, 99, 42, 67};
-        int elementoABuscar = 40;
+    public static void demonstrateSearch() {
+        System.out.println("\n\n--- 3. SEARCH DEMO ---");
+        int[] sortedArray = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+        int[] unsortedArray = {55, 23, 78, 11, 99, 42, 67};
+        int elementToSearch = 40;
 
-        System.out.println("\n--- a) Búsqueda Lineal ---");
-        System.out.println("Array: " + Arrays.toString(arrayDesordenado));
-        int[] resLineal = AlgoritmosBusqueda.busquedaLineal(arrayDesordenado, 42);
-        System.out.printf("Buscando 42: Encontrado en índice %d en %d pasos.\n", resLineal[0], resLineal[1]);
+        System.out.println("\n--- a) Linear Search ---");
+        System.out.println("Array: " + Arrays.toString(unsortedArray));
+        int[] linearResult = AlgoritmosBusqueda.linearSearch(unsortedArray, 42);
+        System.out.printf("Searching for 42: Found at index %d in %d steps.\n", linearResult[0], linearResult[1]);
 
-        System.out.println("\n--- b) Búsqueda Binaria (requiere array ordenado) ---");
-        System.out.println("Array: " + Arrays.toString(arrayOrdenado));
-        int[] resBinaria = AlgoritmosBusqueda.busquedaBinaria(arrayOrdenado, elementoABuscar);
-        System.out.printf("Buscando %d: Encontrado en índice %d en %d pasos.\n", elementoABuscar, resBinaria[0], resBinaria[1]);
+        System.out.println("\n--- b) Binary Search (requires sorted array) ---");
+        System.out.println("Array: " + Arrays.toString(sortedArray));
+        int[] binaryResult = AlgoritmosBusqueda.binarySearch(sortedArray, elementToSearch);
+        System.out.printf("Searching for %d: Found at index %d in %d steps.\n", elementToSearch, binaryResult[0], binaryResult[1]);
     }
 
-    public static void demostrarDeque() {
-        System.out.println("\n\n--- 4. DEMOSTRACIÓN DE DEQUE ---");
+    public static void demonstrateDeque() {
+        System.out.println("\n\n--- 4. DEQUE DEMO ---");
         Deque<Integer> deque = new Deque<>();
-        System.out.println("Estado inicial: " + deque);
-        deque.agregarFrente(10);
-        deque.agregarFin(20);
-        deque.agregarFrente(5);
-        deque.agregarFin(25);
-        System.out.println("Después de agregar 10, 20, 5, 25: " + deque);
-        System.out.println("Remover del frente: " + deque.removerFrente());
-        System.out.println("Remover del final: " + deque.removerFin());
-        System.out.println("Estado final: " + deque);
+        System.out.println("Initial state: " + deque);
+        deque.addFront(10);
+        deque.addRear(20);
+        deque.addFront(5);
+        deque.addRear(25);
+        System.out.println("After adding 10, 20, 5, 25: " + deque);
+        System.out.println("Remove from front: " + deque.removeFront());
+        System.out.println("Remove from rear: " + deque.removeRear());
+        System.out.println("Final state: " + deque);
     }
 
-    public static void demostrarColaDePrioridad() {
-        System.out.println("\n\n--- 5. DEMOSTRACIÓN DE COLA DE PRIORIDAD ---");
+    public static void demonstratePriorityQueue() {
+        System.out.println("\n\n--- 5. PRIORITY QUEUE DEMO ---");
         ColaPrioridad<String> pq = new ColaPrioridad<>();
-        System.out.println("Encolando elementos con prioridades (valor, prioridad)...");
-        pq.encolar("Baja", 1);
-        pq.encolar("Alta", 5);
-        pq.encolar("Media", 3);
-        pq.encolar("Crítica", 10);
-        System.out.println("Estado de la cola: " + pq);
+        System.out.println("Enqueuing items with priorities (value, priority)...");
+        pq.enqueue("Low", 1);
+        pq.enqueue("High", 5);
+        pq.enqueue("Medium", 3);
+        pq.enqueue("Critical", 10);
+        System.out.println("Queue state: " + pq);
 
-        System.out.println("\nDesencolando en orden de prioridad:");
-        while (!pq.estaVacia()) {
-            System.out.println("Elemento atendido: " + pq.desencolar());
+        System.out.println("\nDequeuing in priority order:");
+        while (!pq.isEmpty()) {
+            System.out.println("Serviced item: " + pq.dequeue());
         }
     }
 }
