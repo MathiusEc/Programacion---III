@@ -1,98 +1,98 @@
-// Archivo: Resolver.java
-// Algoritmo de backtracking principal.
-// Integra: Reto 1 (contadores), Reto 2 (orden),
-//          Reto 4 (profundidad), Reto 5 (heurística)
+// File: Resolver.java
+// Main backtracking algorithm.
+// Integrates: Challenge 1 (counters), Challenge 2 (order),
+//          Challenge 4 (depth), Challenge 5 (heuristic)
 public class Resolver {
 
-    public static boolean resolver(LaberintoGrafico panel, int fila, int col) {
+    public static boolean resolver(LaberintoGrafico panel, int row, int col) {
 
         panel.repaint();
-        panel.dormir();
+        panel.sleep();
 
-        // Fuera del tablero
-        if (fila < 0 || col < 0 ||
-                fila >= panel.laberinto.length ||
-                col  >= panel.laberinto[0].length) {
+        // Out of bounds
+        if (row < 0 || col < 0 ||
+                row >= panel.maze.length ||
+                col  >= panel.maze[0].length) {
             return false;
         }
 
-        // Pared o ya visitado
-        if (panel.laberinto[fila][col] == 1 ||
-                panel.laberinto[fila][col] == 9 ||
-                panel.laberinto[fila][col] == 5) {
+        // Wall or already visited
+        if (panel.maze[row][col] == 1 ||
+                panel.maze[row][col] == 9 ||
+                panel.maze[row][col] == 5) {
             return false;
         }
 
-        // RETO 1 — contar llamadas válidas
-        panel.llamadas++;
+        // CHALLENGE 1 — count valid calls
+        panel.calls++;
 
-        // RETO 4 — actualizar profundidad
-        panel.profundidadActual++;
-        if (panel.profundidadActual > panel.profundidadMaxima)
-            panel.profundidadMaxima = panel.profundidadActual;
+        // CHALLENGE 4 — update depth
+        panel.currentDepth++;
+        if (panel.currentDepth > panel.maxDepth)
+            panel.maxDepth = panel.currentDepth;
 
-        // Salida encontrada
-        if (panel.laberinto[fila][col] == 2) {
-            panel.profundidadActual--;
+        // Exit found
+        if (panel.maze[row][col] == 2) {
+            panel.currentDepth--;
             return true;
         }
 
-        // Marcar celda como parte del camino actual
-        panel.laberinto[fila][col] = 9;
+        // Mark cell as part of the current path
+        panel.maze[row][col] = 9;
 
-        // RETO 4 — contar nodos explorados
-        panel.nodosExplorados++;
+        // CHALLENGE 4 — count explored nodes
+        panel.nodesExplored++;
 
         panel.repaint();
-        panel.dormir();
+        panel.sleep();
 
-        // RETO 2 + RETO 5 — obtener direcciones
-        int[][] dirs = obtenerDirecciones(panel, fila, col);
+        // CHALLENGE 2 + CHALLENGE 5 — get directions
+        int[][] dirs = getDirections(panel, row, col);
 
         for (int[] d : dirs) {
-            if (resolver(panel, fila + d[0], col + d[1])) {
-                panel.profundidadActual--;
+            if (resolver(panel, row + d[0], col + d[1])) {
+                panel.currentDepth--;
                 return true;
             }
         }
 
-        // RETO 1 — contar retrocesos
-        panel.retrocesos++;
+        // CHALLENGE 1 — count backtracks
+        panel.backtracks++;
 
-        // Backtracking visual
-        panel.laberinto[fila][col] = 5;
+        // Visual backtracking
+        panel.maze[row][col] = 5;
 
         panel.repaint();
-        panel.dormir();
+        panel.sleep();
 
-        panel.profundidadActual--;
+        panel.currentDepth--;
         return false;
     }
 
-    // RETO 2 — Orden de exploración configurable
-    // RETO 5 — Heurística distancia Manhattan
-    private static int[][] obtenerDirecciones(LaberintoGrafico panel, int fila, int col) {
+    // CHALLENGE 2 — Configurable exploration order
+    // CHALLENGE 5 — Manhattan distance heuristic
+    private static int[][] getDirections(LaberintoGrafico panel, int row, int col) {
 
-        // {deltaFila, deltaCol}
-        int[][] original = {{-1,0},{0,1},{1,0},{0,-1}}; // arriba, derecha, abajo, izquierda
-        int[][] derecha  = {{0,1},{1,0},{-1,0},{0,-1}}; // derecha primero
-        int[][] abajo    = {{1,0},{0,1},{-1,0},{0,-1}}; // abajo primero
+        // {deltaRow, deltaCol}
+        int[][] original = {{-1,0},{0,1},{1,0},{0,-1}}; // up, right, down, left
+        int[][] right  = {{0,1},{1,0},{-1,0},{0,-1}}; // right first
+        int[][] down    = {{1,0},{0,1},{-1,0},{0,-1}}; // down first
 
         int[][] base;
         switch (Configuracion.ORDEN) {
-            case "DERECHA": base = derecha; break;
-            case "ABAJO":   base = abajo;   break;
+            case "DERECHA": base = right; break;
+            case "ABAJO":   base = down;   break;
             default:        base = original; break;
         }
 
-        // RETO 5 — reordenar por distancia Manhattan a la salida
-        if (Configuracion.HEURISTICA && panel.filaSalida >= 0) {
+        // CHALLENGE 5 — reorder by Manhattan distance to the exit
+        if (Configuracion.HEURISTICA && panel.exitRow >= 0) {
             int[][] dirs = base.clone();
             java.util.Arrays.sort(dirs, (a, b) -> {
-                int dA = Math.abs((fila + a[0]) - panel.filaSalida)
-                        + Math.abs((col  + a[1]) - panel.colSalida);
-                int dB = Math.abs((fila + b[0]) - panel.filaSalida)
-                        + Math.abs((col  + b[1]) - panel.colSalida);
+                int dA = Math.abs((row + a[0]) - panel.exitRow)
+                        + Math.abs((col  + a[1]) - panel.exitCol);
+                int dB = Math.abs((row + b[0]) - panel.exitRow)
+                        + Math.abs((col  + b[1]) - panel.exitCol);
                 return Integer.compare(dA, dB);
             });
             return dirs;

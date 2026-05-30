@@ -1,18 +1,18 @@
-// Archivo: Configuracion.java
-// Centraliza los parámetros de todos los retos.
-// Solo cambia aquí para cambiar el comportamiento.
+// File: Configuracion.java
+// Centralizes the parameters of all challenges.
+// Only change here to change the behavior.
 public class Configuracion {
 
-    // RETO 1 — Tamaño del laberinto
-    // Valores válidos: 5 | 6 | 10 | 20 | -1 (imposible)
+    // CHALLENGE 1 — Maze size
+    // Valid values: 5 | 6 | 10 | 20 | -1 (impossible)
     public static int TAMANIO = 20;
 
-    // RETO 2 — Orden de exploración
-    // Valores válidos: "ORIGINAL" | "DERECHA" | "ABAJO"
+    // CHALLENGE 2 — Exploration order
+    // Valid values: "ORIGINAL" | "RIGHT" | "DOWN"
     public static String ORDEN = "ORIGINAL";
 
-    // RETO 5 — Heurística de distancia Manhattan
-    // Valores válidos: false | true
+    // CHALLENGE 5 — Manhattan distance heuristic
+    // Valid values: false | true
     public static boolean HEURISTICA = false;
 
 }

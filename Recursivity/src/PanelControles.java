@@ -5,10 +5,10 @@ import java.util.function.IntConsumer;
 
 /**
  * PanelControles.java
- * Panel inferior minimalista:
- *   - Campo de texto para ingresar el nivel
- *   - Botón Dibujar (también responde a Enter)
- *   - Mensaje de error inline si el input no es válido
+ * Minimalist bottom panel:
+ *   - Text field to enter the level
+ *   - Draw button (also responds to Enter)
+ *   - Inline error message if the input is invalid
  */
 
 public class PanelControles extends JPanel {
@@ -20,12 +20,12 @@ public class PanelControles extends JPanel {
         setBackground(Tema.FONDO_PANEL);
         setBorder(BorderFactory.createMatteBorder(1, 0, 0, 0, Tema.BORDE));
 
-        // Etiqueta
-        JLabel lbl = new JLabel("Nivel de recursión:");
+        // Label
+        JLabel lbl = new JLabel("Recursion level:");
         lbl.setFont(new Font("Monospaced", Font.BOLD, 13));
         lbl.setForeground(new Color(0xA8C4DC));
 
-        // Campo de texto
+        // Text field
         campoNivel = new JTextField(String.valueOf(nivelInicial), 4);
         campoNivel.setFont(new Font("Monospaced", Font.BOLD, 20));
         campoNivel.setBackground(new Color(0x0F1923));
@@ -37,8 +37,8 @@ public class PanelControles extends JPanel {
         ));
         campoNivel.setHorizontalAlignment(JTextField.CENTER);
 
-        // Botón
-        JButton btnDibujar = new JButton("Dibujar ▶");
+        // Button
+        JButton btnDibujar = new JButton("Draw ▶");
         btnDibujar.setFont(new Font("Monospaced", Font.BOLD, 13));
         btnDibujar.setBackground(new Color(0x1E3A5F));
         btnDibujar.setForeground(new Color(0x06B6D4));
@@ -49,30 +49,30 @@ public class PanelControles extends JPanel {
         btnDibujar.setFocusPainted(false);
         btnDibujar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        // Mensaje de error
+        // Error message
         lblError = new JLabel(" ");
         lblError.setFont(new Font("Monospaced", Font.ITALIC, 11));
         lblError.setForeground(new Color(0xFF4444));
 
-        // Acción compartida (botón y Enter)
+        // Shared action (button and Enter)
         Runnable accion = () -> {
             try {
                 int nivel = Integer.parseInt(campoNivel.getText().trim());
                 if (nivel < 0) {
-                    lblError.setText("⚠ El nivel debe ser 0 o mayor.");
+                    lblError.setText("⚠ Level must be 0 or greater.");
                     return;
                 }
                 lblError.setText(" ");
                 alCambiar.accept(nivel);
             } catch (NumberFormatException ex) {
-                lblError.setText("⚠ Ingresa un número entero válido.");
+                lblError.setText("⚠ Enter a valid integer.");
             }
         };
 
         btnDibujar.addActionListener((ActionEvent e) -> accion.run());
         campoNivel.addActionListener((ActionEvent e) -> accion.run());
 
-        // Ensamblar
+        // Assemble
         add(lbl);
         add(campoNivel);
         add(btnDibujar);

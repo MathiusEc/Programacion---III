@@ -1,91 +1,91 @@
 import java.util.Scanner;
 
 /**
- * Implementar algoritmo de búsqueda lineal y binaria con las siguientes características:
- * • Generar un array de números enteros aleatorios permitiendo seleccionar el tamaño del arreglo
- * • Búsqueda lineal y conteo de pasos para encontrar un elemento
- * • Búsqueda binaria y conteo de pasos para encontrar un elemento
- * • Crear una gráfica (excel o cualquier herramienta) número de pasos vs. tamaño del array
+ * Implement linear and binary search algorithms with the following characteristics:
+ * • Generate an array of random integers allowing the user to select the array size
+ * • Linear search and step count to find an element
+ * • Binary search and step count to find an element
+ * • Create a graph (Excel or any tool) of number of steps vs. array size
  */
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        mostrarBienvenida();
+        showWelcomeMessage();
         
-        // 1. Solicitar tamaño del array // translate
-        int tamaño = solicitarTamaño();
+        // 1. Request array size
+        int size = requestSize();
         
-        // 2. Crear generador de datos
-        GeneradorDatos generador = new GeneradorDatos(tamaño);
+        // 2. Create data generator
+        GeneradorDatos generator = new GeneradorDatos(size);
         
-        // 3. Imprimir array sin ordenar
-        generador.imprimirArraySinOrdenar();
+        // 3. Print unsorted array
+        generator.imprimirArraySinOrdenar();
         
-        // 4. Imprimir array ordenado
-        generador.imprimirArrayOrdenado();
+        // 4. Print sorted array
+        generator.imprimirArrayOrdenado();
         
-        // 5. Crear instancia de Busqueda
-        Busqueda busqueda = new Busqueda(generador.getArrayOrdenado());
+        // 5. Create Search instance
+        Busqueda search = new Busqueda(generator.getArrayOrdenado());
         
-        // 6. Menú para realizar búsquedas
-        boolean buscarMas = true;
-        while (buscarMas) {
-            System.out.print("Ingresa el numero a buscar (0 para salir): ");
+        // 6. Menu to perform searches
+        boolean searchMore = true;
+        while (searchMore) {
+            System.out.print("Enter the number to search for (0 to exit): ");
             
-            int numero = scanner.nextInt();
+            int number = scanner.nextInt();
             
-            if (numero == 0) {
-                buscarMas = false;
+            if (number == 0) {
+                searchMore = false;
             } else {
-                // Realizar búsqueda lineal en array ordenado
-                int[] resultadoLineal = Busqueda.busquedaLineal(generador.getArrayOrdenado(), numero);
+                // Perform linear search on sorted array
+                int[] linearResult = Busqueda.busquedaLineal(generator.getArrayOrdenado(), number);
 
-                // Realizar búsqueda binaria en array ordenado
-                int[] resultadoBinaria = busqueda.busquedaBinaria(numero);
+                // Perform binary search on sorted array
+                int[] binaryResult = search.busquedaBinaria(number);
                 
-                // Mostrar resultados en tabla
-                generador.imprimirTablaBusqueda(resultadoLineal, resultadoBinaria, numero);
+                // Show results in a table
+                generator.imprimirTablaBusqueda(linearResult, binaryResult, number);
                 
-                // Mostrar resumen comparativo
-                generador.mostrarResumen(resultadoLineal, resultadoBinaria);
+                // Show comparative summary
+                generator.mostrarResumen(linearResult, binaryResult);
             }
         }
         
-        mostrarDespedida();
+        showGoodbyeMessage();
         scanner.close();
     }
 
-    /// Muestra el mensaje de bienvenida
-    private static void mostrarBienvenida() {
-        System.out.println("\n--- BUSQUEDA LINEAL vs BUSQUEDA BINARIA ---");
-        System.out.println("--- Laboratorio de Programacion III ---\n");
-        System.out.println("Nombre: Mathías Castillo\n");
+    /// Shows the welcome message
+    private static void showWelcomeMessage() {
+        System.out.println("\n--- LINEAR SEARCH vs BINARY SEARCH ---");
+        System.out.println("--- Programming III Lab ---\n");
+        System.out.println("Name: Mathías Castillo\n");
     }
 
-    /// Muestra el mensaje de despedida
-    private static void mostrarDespedida() {
-        System.out.println("\n--- Fin del programa ---\n");
+    /// Shows the goodbye message
+    private static void showGoodbyeMessage() {
+        System.out.println("\n--- End of program ---\n");
     }
 
-    // Solicita al usuario el tamaño del array y valida la entrada
-    private static int solicitarTamaño() {
-        int tamaño = 0;
-        while (tamaño <= 0) {
-            System.out.print("Ingresa el tamano del array: ");
+    // Prompts the user for the array size and validates the input
+    private static int requestSize() {
+        int size = 0;
+        while (size <= 0) {
+            System.out.print("Enter the size of the array: ");
             
             try {
-                tamaño = scanner.nextInt();
-                if (tamaño <= 0) {
-                    System.out.println("Error: El tamano debe ser un numero positivo");
+                size = scanner.nextInt();
+                if (size <= 0) {
+                    System.out.println("Error: The size must be a positive number");
                 }
             } catch (Exception e) {
-                System.out.println("Error: Entrada invalida");
+                System.out.println("Error: Invalid input");
                 scanner.nextLine();
-                tamaño = 0;
+                size = 0;
             }
         }
-        return tamaño;
+        return size;
     }
 
 }

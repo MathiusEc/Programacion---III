@@ -37,3 +37,7 @@ Thumbs.db
 # Carpetas de dependencias (si usas Maven o Gradle más adelante)
 target/
 .gradle/
+
+# Archivos de Agentes de IA
+AGENTS.md
+

@@ -11,7 +11,7 @@ public class SierpinskiLab extends JFrame {
 
     //  CONSTRUCTOR
     public SierpinskiLab() {
-        setTitle("Laboratorio: Triángulo de Sierpinski — Recursividad");
+        setTitle("Lab: Sierpinski's Triangle — Recursion");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(VENTANA_W, VENTANA_H);
         setResizable(false);
@@ -19,19 +19,19 @@ public class SierpinskiLab extends JFrame {
         getContentPane().setBackground(Tema.FONDO);
         setLayout(new BorderLayout());
 
-        // Crear paneles
+        // Create panels
         PanelDibujo panelDibujo = new PanelDibujo(NIVEL_INICIAL);
         panelDibujo.setPreferredSize(new Dimension(VENTANA_W, PANEL_H));
 
-        // El slider en PanelControles llama a panelDibujo.setNivel()
-        // mediante un lambda: ninguna de las dos clases conoce a la otra
+        // The slider in PanelControles calls panelDibujo.setNivel()
+        // via a lambda: neither class knows the other
         PanelControles panelControles = new PanelControles(
                 NIVEL_INICIAL,
                 panelDibujo::setNivel          // callback: IntConsumer
         );
         panelControles.setPreferredSize(new Dimension(VENTANA_W, CTRL_H));
 
-        // Ensamblar ventana
+        // Assemble window
         add(panelDibujo,    BorderLayout.CENTER);
         add(panelControles, BorderLayout.SOUTH);
     }
