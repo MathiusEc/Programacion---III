@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         mostrarBienvenida();
         
-        // 1. Solicitar tamaño del array
+        // 1. Solicitar tamaño del array // translate
         int tamaño = solicitarTamaño();
         
         // 2. Crear generador de datos
