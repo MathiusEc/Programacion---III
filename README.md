@@ -1,6 +1,6 @@
 # Programming III: Exercises and Projects
 
-This repository serves as a comprehensive collection of exercises, examples, and projects developed throughout the Programming III course at Universidad de las Américas (UDLA). It is designed to document the learning process and provide a reference for Advanced Programming concepts, Data Structures, and Algorithmic implementation in Java.
+This repository serves as a comprehensive collection of exercises, examples, and projects developed throughout the Programming III course at Universidad de las Américas (UDLA). It is designed to document the learning process and provide a reference for Advanced Programming concepts, Data Structures, and Algorithmic implementation in Java. The codebase is fully commented in English.
 
 ## Core Topics Covered
 
@@ -18,90 +18,16 @@ The project follows a modular structure where each folder is an independent proj
 
 ```text
 Ejercicios_III/
-├── Backtracking/                   # Maze solver using backtracking algorithms
-│   └── src/
-│       ├── Configuracion.java
-│       ├── LaberintoGrafico.java
-│       ├── Laberintos.java
-│       └── Resolver.java
-├── Big O/                          # Algorithm complexity analysis and Big O notation
-│   └── src/
-│       └── Main.java
-├── Busqueda Binaria-Lineal/        # Binary and linear search algorithm implementations
-│   └── src/
-│       ├── Busqueda.java
-│       ├── GeneradorDatos.java
-│       └── Main.java
-├── Dynamic Stack/                  # Stack implementation with dynamic nodes
-│   └── src/
-│       ├── Main.java
-│       ├── Nodo.java
-│       └── PilaDinamica.java
-├── Invertir Cadena/                # String reversal exercise
-│   └── src/
-│       └── Main.java
-├── Practica/                       # Practice exercises with queue and printer simulation
-│   └── src/
-│       ├── Documento.java
-│       ├── Impresora.java
-│       └── Main.java
-├── Práctica Prueba I/              # Practice exam preparation exercises
-│   ├── Colas_FIFO/                 # FIFO Queue implementation
-│   │   └── src/
-│   │       └── Main.java
-│   ├── Pila_ArrayList/             # Stack implementation using ArrayList
-│   │   └── src/
-│   │       ├── Main.java
-│   │       └── Pila.java
-│   ├── Pila_Dinamica_Nodos/        # Dynamic stack implementation with linked nodes
-│   │   └── src/
-│   │       ├── Main.java
-│   │       ├── Nodo.java
-│   │       └── Pila_LinkedList_Manual.java
-│   ├── Pilas y Colas/              # Stack and Queue data structure implementations
-│   │   └── src/
-│   │       ├── Cola.java
-│   │       ├── Main.java
-│   │       ├── Nodo.java
-│   │       └── Pila.java
-│   ├── Reversa de Cadena/          # String reversal using stacks and queues
-│   │   └── src/
-│   │       ├── Cola.java
-│   │       ├── Main.java
-│   │       ├── Nodo.java
-│   │       └── Pila.java
-│   └── Simetria por Mitades/       # Symmetry check in a string using stacks and queues
-│       └── src/
-│           ├── Cola.java
-│           ├── Main.java
-│           ├── Nodo.java
-│           └── Pila.java
-├── Recursividad Grafos/            # Sierpinski triangle generation using recursion
-│   └── src/
-│       ├── AlgoritmoSierpinski.java
-│       ├── PanelControles.java
-│       ├── PanelDibujo.java
-│       └── SierpinskiLab.java
-│       └── Tema.java
-├── RetosAlgoritmos/                # Collection of algorithmic challenges
-│   └── src/
-│       ├── backtracking/
-│       │   ├── Laberinto.java
-│       │   └── SolucionadorLaberinto.java
-│       ├── busqueda/
-│       │   └── AlgoritmosBusqueda.java
-│       ├── colasdeprioridad/
-│       │   ├── ColaPrioridad.java
-│       │   └── Elemento.java
-│       ├── deque/
-│       │   ├── Deque.java
-│       │   └── Nodo.java
-│       └── recursividad/
-│           ├── Factorial.java
-│           └── FractalSierpinski.java
-└── SnakeGame/                      # Interactive game implementing GUI, game loops, and logic
-    └── src/
-        └── SnakeGame.java
+├── Backtracking/
+├── Big O/
+├── Busqueda Binaria-Lineal/
+├── Dynamic Stack/
+├── Invertir Cadena/
+├── Practica/
+├── Práctica Prueba I/
+├── Recursivity/
+├── RetosAlgoritmos/
+└── SnakeGame/
 ```
 
 *Note: New modules and exercises will be added as the course progresses.*
@@ -167,6 +93,6 @@ When contributing or adding new exercises:
 
 <br><br>
 
-*Document updated on May 2026*
+*Document updated on May 30, 2026*
 
 </div>
